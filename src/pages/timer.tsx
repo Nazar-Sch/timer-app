@@ -1,13 +1,10 @@
 import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 import { Wrapper, Layout, TimeWrapper, LogOutBtn } from '../components/styled'
-import { AuthContext } from '../components/context/authContext'
 import fire, { db } from '../fire'
 
 //TODO: Refactor styled
-//TODO: Add check logged user
 const ImageWrapper = styled.div`
   padding: 90px;
 `
@@ -19,19 +16,13 @@ const Image = styled.img`
 
 const MinutesWrapper = styled.div``
 
-interface ITimerProps {
-  usersUid?: string | string[],
-}
-
-const Timer: React.FC<ITimerProps> = ({ usersUid }) => {
+const Timer: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [desktopTime, setDesktopTime] = useState(0)
   const [mobileTime, setMobileTime] = useState(0)
 
-  const auth = useContext(AuthContext)
   const user = fire.auth().currentUser
   const usersRef = db.ref(`users/${user.uid}`)
-  console.log(usersRef)
 
   React.useEffect(() => {
     if (window.innerWidth < 800) {
@@ -60,13 +51,9 @@ const Timer: React.FC<ITimerProps> = ({ usersUid }) => {
 
   }, [desktopTime, mobileTime])
 
-  const handleLogOut = () => {
-    fire.auth().signOut()
-  }
-
   return (
     <Layout isMobile={isMobile}>
-      <LogOutBtn onClick={() => handleLogOut()}>Log out</LogOutBtn>
+      <LogOutBtn onClick={() => fire.auth().signOut()}>Log out</LogOutBtn>
       <TimeWrapper>
         <Wrapper>
           <ImageWrapper>

@@ -1,11 +1,8 @@
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { withRouter } from "react-router";
 
-import Button from '../components/button';
 import Footer from '../components/footer';
-import Input from '../components/input';
-import { Form, Layout, Wrapper } from '../components/styled';
-import Title from '../components/title';
+import { Form, Layout, Wrapper, Title, Input, ButtonSubmit } from '../components/styled';
 import fire, { db } from '../fire';
 
 const SignPage = ({ history }) => {
@@ -41,7 +38,7 @@ const SignPage = ({ history }) => {
     <Layout>
       <Wrapper>
         <Form onSubmit={handleSignUp}>
-          <Title title="Sign" />
+          <Title>Sign</Title>
           <Input 
             placeholder="Email"
             name="email"
@@ -58,7 +55,7 @@ const SignPage = ({ history }) => {
             placeholder="Lastname"
             name="lastname"
           />
-          <Button title="Sign"/>
+          <ButtonSubmit type="submit">Sign</ButtonSubmit>
         </Form>
         <Footer text='Don’t have an account yet? ' linkText="Login!" url="/login" />
       </Wrapper>

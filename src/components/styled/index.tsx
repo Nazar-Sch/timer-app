@@ -54,3 +54,37 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
 `
+
+export const Title = styled.h2`
+  padding-top: 50px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 50px;
+`
+
+export const Input= styled.input`
+  border: 0;
+  display: block;
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid black;
+  }
+  box-sizing: border-box;
+  font-size: 24px;
+  background-color:#C4C4C4;
+  margin-bottom: 25px;
+  padding: 10px;
+`
+
+export const ButtonSubmit = styled.button`
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-bottom: 15px;
+  padding-right: 30px;
+  background-color: #828282;
+  border-radius: 63px;
+  border: 0;
+  font-size: 16px;
+  cursor: pointer;
+`
+
