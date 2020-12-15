@@ -6,7 +6,6 @@ import {
   Layout, 
   TimeWrapper, 
   LogOutBtn,
-  ImageWrapper,
   Image,
   MinutesWrapper,
   TimerTitle,
@@ -61,9 +60,7 @@ const Timer: React.FC = () => {
       <TimeWrapper>
         <TimerTitle>Desktop</TimerTitle>
         <Wrapper>
-          <ImageWrapper>
-            <Image src={'/timer.svg'} alt="Timer" />
-          </ImageWrapper>
+          <Image src={'/timer.svg'} alt="Timer" />
         </Wrapper>
         <MinutesWrapper>{moment.utc(desktopTime*1000).format("HH:mm:ss")}</MinutesWrapper>
       </TimeWrapper>
@@ -71,9 +68,7 @@ const Timer: React.FC = () => {
       <TimeWrapper>
         <TimerTitle>Mobile</TimerTitle>
         <Wrapper>
-          <ImageWrapper>
-            <Image src={'/timer.svg'} alt="Timer" />
-          </ImageWrapper>
+          <Image src={'/timer.svg'} alt="Timer" />
         </Wrapper>
         <MinutesWrapper>{moment.utc(mobileTime*1000).format("HH:mm:ss")}</MinutesWrapper>
       </TimeWrapper>

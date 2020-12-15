@@ -63,8 +63,8 @@ export const Form = styled.form`
 `
 
 export const Title = styled.h2`
-  padding-bottom: 50px;
-  padding-top: 100px;
+  padding-bottom: ${isMobile ? '35px' : '50px'};
+  padding-top: ${isMobile ? '75px' : '100px'};
 `
 
 export const TimerTitle = styled.h3`
@@ -93,13 +93,16 @@ export const ButtonSubmit = styled.button`
   background-color: #828282;
   border-radius: 63px;
   border: 0;
+  &:focus {
+    outline: none;
+  }
   cursor: pointer;
   font-size: ${fontSize};
 `
 
 export const FooterWrapper = styled(Link)`
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: ${isMobile ? '10px' : '30px'};
+  padding-bottom: ${isMobile ? '10px' : '30px'};
   color: #88888C;
   text-decoration: underline;
   cursor: pointer;
@@ -109,18 +112,15 @@ export const FooterWrapper = styled(Link)`
   }
 `
 
-export const ImageWrapper = styled.div`
-  padding-top: ${isMobile ? '85px' : '90px'};
-  padding-bottom: ${isMobile ? '85px' : '90px'};
-  padding-left: ${isMobile ? '50px' : '90px'};
-  padding-right: ${isMobile ? '50px' : '90px'};
-`
-
 export const Image = styled.img`
   max-width: ${isMobile ? '100px' : '250px'};
   min-width: 100px;
   width: 100%;
   height: ${isMobile ? '100px' : 'auto'};
+  margin-top: ${isMobile ? '85px' : '90px'};
+  margin-bottom: ${isMobile ? '85px' : '90px'};
+  margin-left: ${isMobile ? '50px' : '90px'};
+  margin-right: ${isMobile ? '50px' : '90px'};
 `
 
 export const MinutesWrapper = styled.div`
