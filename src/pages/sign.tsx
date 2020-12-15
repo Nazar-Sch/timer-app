@@ -1,9 +1,16 @@
 import React, { useCallback } from 'react'
-import { withRouter } from "react-router";
+import { withRouter } from "react-router"
 
-import Footer from '../components/footer';
-import { Form, Layout, Wrapper, Title, Input, ButtonSubmit } from '../components/styled';
-import fire, { db } from '../fire';
+import { 
+  Form, 
+  Layout, 
+  Wrapper, 
+  Title, 
+  Input, 
+  ButtonSubmit, 
+  FooterWrapper 
+} from '../components/styled'
+import fire, { db } from '../fire'
 
 const SignPage = ({ history }) => {
   const handleSignUp = useCallback(async event => {
@@ -26,14 +33,13 @@ const SignPage = ({ history }) => {
                 timeMobile: 0,
               },
             )
-        })
-      history.push("/");
+        });
+      history.push("/")
     } catch (error) {
-      alert(error);
+      alert(error)
     }
   }, [history]);
 
-  
   return (
     <Layout>
       <Wrapper>
@@ -42,22 +48,26 @@ const SignPage = ({ history }) => {
           <Input 
             placeholder="Email"
             name="email"
+            type="email"
           />
           <Input 
             placeholder="Password" 
             name="password"
+            type="password"
           />
           <Input 
             placeholder="Firstname" 
             name="firstname"
+            type="text"
           />
           <Input 
             placeholder="Lastname"
             name="lastname"
+            type="text"
           />
           <ButtonSubmit type="submit">Sign</ButtonSubmit>
         </Form>
-        <Footer text='Don’t have an account yet? ' linkText="Login!" url="/login" />
+        <FooterWrapper to="/login">Already registered? <span>Log in!</span></FooterWrapper>
       </Wrapper>
     </Layout>
   )

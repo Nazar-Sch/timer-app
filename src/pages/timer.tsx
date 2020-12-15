@@ -1,23 +1,16 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import moment from 'moment'
 
-import { Wrapper, Layout, TimeWrapper, LogOutBtn } from '../components/styled'
+import { 
+  Wrapper, 
+  Layout, 
+  TimeWrapper, 
+  LogOutBtn,
+  ImageWrapper,
+  Image,
+  MinutesWrapper,
+} from '../components/styled'
 import fire, { db } from '../fire'
-
-//TODO: Refactor styled
-const ImageWrapper = styled.div`
-  padding: 90px;
-`
-
-const Image = styled.img`
-  width: 250px;
-  height: 250px;
-`
-
-const MinutesWrapper = styled.div`
-  font-size: 24px;
-`
 
 const Timer: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -60,8 +53,10 @@ const Timer: React.FC = () => {
   }, [desktopTime, mobileTime, screenWidth])
 
   return (
-    <Layout isMobile={isMobile}>
+    <Layout>
+
       <LogOutBtn onClick={() => fire.auth().signOut()}>Log out</LogOutBtn>
+
       <TimeWrapper>
         <Wrapper>
           <ImageWrapper>
@@ -79,7 +74,7 @@ const Timer: React.FC = () => {
         </Wrapper>
         <MinutesWrapper>{moment.utc(mobileTime*1000).format("HH:mm:ss")}</MinutesWrapper>
       </TimeWrapper>
-
+  
     </Layout>
   )
 }

@@ -1,23 +1,30 @@
 import React, { useCallback, useContext } from 'react'
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom'
 
-import { AuthContext } from '../components/context/authContext';
-import { Form, Layout, Wrapper, Title, Input, ButtonSubmit } from '../components/styled';
-import Footer from '../components/footer';
+import { AuthContext } from '../components/context/authContext'
+import { 
+  Form, 
+  Layout, 
+  Wrapper, 
+  Title, 
+  Input, 
+  ButtonSubmit, 
+  FooterWrapper,
+} from '../components/styled'
 import fire from '../fire'
 
 const LoginPage = ({ history }) => {
   const handleLogin = useCallback(
     async event => {
-      event.preventDefault();
-      const { email, password } = event.target.elements;
+      event.preventDefault()
+      const { email, password } = event.target.elements
       try {
         await fire
           .auth()
           .signInWithEmailAndPassword(email.value, password.value)
-        history.push("/");
+        history.push("/")
       } catch (error) {
-        alert(error);
+        alert(error)
       }
     },
     [history]
@@ -41,11 +48,12 @@ const LoginPage = ({ history }) => {
           <Input 
             placeholder="Password"
             name="password"
+            type="password"
           />
           <ButtonSubmit type="submit">Login</ButtonSubmit>
 
         </Form>
-        <Footer text='Don’t have an account yet? ' linkText="Register!" url="/sign" />
+        <FooterWrapper to="/sign">Don’t have an account yet? <span>Register!</span></FooterWrapper>
       </Wrapper>
     </Layout>
   )
