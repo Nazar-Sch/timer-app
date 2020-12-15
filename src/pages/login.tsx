@@ -14,6 +14,8 @@ import {
 import fire from '../fire'
 
 const LoginPage = ({ history }) => {
+  const { user } = useContext(AuthContext)
+
   const handleLogin = useCallback(
     async event => {
       event.preventDefault()
@@ -29,8 +31,6 @@ const LoginPage = ({ history }) => {
     },
     [history]
   );
-
-  const { user } = useContext(AuthContext)
 
   if (user) {
     return <Redirect to="/" />
@@ -53,7 +53,9 @@ const LoginPage = ({ history }) => {
           <ButtonSubmit type="submit">Login</ButtonSubmit>
 
         </Form>
-        <FooterWrapper to="/sign">Don’t have an account yet? <span>Register!</span></FooterWrapper>
+        <FooterWrapper to="/sign">
+          Don’t have an account yet? <span>Register!</span>
+        </FooterWrapper>
       </Wrapper>
     </Layout>
   )

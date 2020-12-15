@@ -1,15 +1,12 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-type TIsMobile = {
-  isMobile?: boolean,
-}
 const mobile = 475
 const clientWidth = document.documentElement.clientWidth
 const isMobile = clientWidth < mobile
 const fontSize = isMobile ? '1rem' : '1.4rem'
 
-export const Layout = styled.div<TIsMobile>`
+export const Layout = styled.div`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -23,8 +20,7 @@ export const Layout = styled.div<TIsMobile>`
   font-size: ${fontSize};
 `
 
-export const Wrapper = styled.div<TIsMobile>`
-  padding-top: 100px;
+export const Wrapper = styled.div`
   padding-right: ${isMobile ? '35px' : '70px'};
   padding-left: ${isMobile ? '35px' : '70px'};
   border-radius: 57px;
@@ -33,13 +29,15 @@ export const Wrapper = styled.div<TIsMobile>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 45px;
+  margin: 15px;
+
 `
 
 export const TimeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 45px;
 `
 
 export const LogOutBtn = styled.button`
@@ -66,6 +64,11 @@ export const Form = styled.form`
 
 export const Title = styled.h2`
   padding-bottom: 50px;
+  padding-top: 100px;
+`
+
+export const TimerTitle = styled.h3`
+  margin: 0;
 `
 
 export const Input= styled.input`
@@ -92,9 +95,6 @@ export const ButtonSubmit = styled.button`
   border: 0;
   cursor: pointer;
   font-size: ${fontSize};
-  -internal-autofill-selected {
-    background-color: #828282 !important;
-  }
 `
 
 export const FooterWrapper = styled(Link)`
@@ -110,13 +110,17 @@ export const FooterWrapper = styled(Link)`
 `
 
 export const ImageWrapper = styled.div`
-  padding: 90px;
+  padding-top: ${isMobile ? '85px' : '90px'};
+  padding-bottom: ${isMobile ? '85px' : '90px'};
+  padding-left: ${isMobile ? '50px' : '90px'};
+  padding-right: ${isMobile ? '50px' : '90px'};
 `
 
 export const Image = styled.img`
-  max-width: 250px;
+  max-width: ${isMobile ? '100px' : '250px'};
+  min-width: 100px;
   width: 100%;
-  height: auto;
+  height: ${isMobile ? '100px' : 'auto'};
 `
 
 export const MinutesWrapper = styled.div`

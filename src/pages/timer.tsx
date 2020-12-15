@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 
 import { 
@@ -9,6 +9,7 @@ import {
   ImageWrapper,
   Image,
   MinutesWrapper,
+  TimerTitle,
 } from '../components/styled'
 import fire, { db } from '../fire'
 
@@ -23,7 +24,7 @@ const Timer: React.FC = () => {
   const usersRef = db.ref(`users/${user.uid}`)
   const screenWidth = document.documentElement.clientWidth
 
-  React.useEffect(() => {
+  useEffect(() => {
     usersRef.on('value', (snapshot) => {
       let { timeDesktop, timeMobile } = snapshot.val()
       setDesktopTime(timeDesktop)
@@ -31,7 +32,7 @@ const Timer: React.FC = () => {
     })
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (screenWidth < _mobileScreen) {
       setIsMobile(true)
     }
@@ -50,7 +51,7 @@ const Timer: React.FC = () => {
     }
 
     return () => clearInterval(interval)
-  }, [desktopTime, mobileTime, screenWidth])
+  }, [desktopTime, mobileTime, usersRef, screenWidth])
 
   return (
     <Layout>
@@ -58,6 +59,7 @@ const Timer: React.FC = () => {
       <LogOutBtn onClick={() => fire.auth().signOut()}>Log out</LogOutBtn>
 
       <TimeWrapper>
+        <TimerTitle>Desktop</TimerTitle>
         <Wrapper>
           <ImageWrapper>
             <Image src={'/timer.svg'} alt="Timer" />
@@ -67,6 +69,7 @@ const Timer: React.FC = () => {
       </TimeWrapper>
 
       <TimeWrapper>
+        <TimerTitle>Mobile</TimerTitle>
         <Wrapper>
           <ImageWrapper>
             <Image src={'/timer.svg'} alt="Timer" />

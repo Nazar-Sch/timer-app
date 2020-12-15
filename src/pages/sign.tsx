@@ -67,7 +67,9 @@ const SignPage = ({ history }) => {
           />
           <ButtonSubmit type="submit">Sign</ButtonSubmit>
         </Form>
-        <FooterWrapper to="/login">Already registered? <span>Log in!</span></FooterWrapper>
+        <FooterWrapper to="/login">
+          Already registered? <span>Log in!</span>
+        </FooterWrapper>
       </Wrapper>
     </Layout>
   )

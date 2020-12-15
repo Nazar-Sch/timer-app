@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react"
 
-import fire from "../../fire";
+import fire from "../../fire"
+import { Layout } from "../styled"
 
-export const AuthContext = React.createContext(null);
+export const AuthContext = React.createContext(null)
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [pending, setPending] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
       setCurrentUser(user)
-      setPending(false)
-    });
-  }, []);
+      setLoading(false)
+    })
+  }, [])
 
-  if (pending) {
-    return <>Loading...</>
+  if (loading) {
+    return <Layout>Loading...</Layout>
   }
 
   return (
@@ -27,5 +28,5 @@ export const AuthProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}
